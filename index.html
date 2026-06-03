@@ -1664,13 +1664,7 @@
 }
 
   
-/* ============ SECTION VIDÉOS YT ============ */
-.videos-section {
-  background: #080f1e;
-  padding: 80px 0 72px;
-  position: relative;
-  overflow: hidden;
-}
+
 
 .videos-section::before {
   content: '';
@@ -1878,16 +1872,7 @@
 }
 
   
-/* Playlist étendue 10 vidéos */
-.vs-playlist {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  max-height: 520px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(201,168,76,0.3) transparent;
-}
+
 
 .vs-playlist::-webkit-scrollbar { width: 4px; }
 .vs-playlist::-webkit-scrollbar-track { background: transparent; }
@@ -1902,13 +1887,7 @@
 }
 
   
-/* ============ SECTION VIDÉOS VIMEO ============ */
-.videos-section {
-  background: #080f1e;
-  padding: 80px 0 72px;
-  position: relative;
-  overflow: hidden;
-}
+
 
 .videos-section::before {
   content: '';
@@ -2116,20 +2095,155 @@
 }
 
   
-/* Fix cliquabilité cards vidéo mobile */
-.vc-card {
-  -webkit-tap-highlight-color: rgba(201,168,76,0.2);
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  position: relative;
-  z-index: 1;
+
+
+  
+/* ===== SECTION VIDÉOS ===== */
+.vs {
+  background: #080f1e;
+  padding: 72px 0 64px;
+  overflow: hidden;
 }
-.vc-card * {
+
+.vs-head {
+  max-width: 720px;
+  margin: 0 auto 44px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.vs-eye {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--or); margin-bottom: 14px;
+  display: block;
+}
+
+.vs-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900; color: var(--blanc);
+  line-height: 1.15; margin-bottom: 12px;
+}
+
+.vs-h2 em { color: var(--or); font-style: italic; }
+
+.vs-sub {
+  font-size: 15px; color: rgba(255,255,255,0.45);
+  line-height: 1.7; max-width: 480px; margin: 0 auto;
+}
+
+/* Player principal */
+.vs-main {
+  max-width: 860px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+}
+
+.vs-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: #000;
+  border: 2px solid rgba(201,168,76,0.3);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
+.vs-meta {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0 0;
+}
+
+.vs-badge {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--or); background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 3px 10px; white-space: nowrap; flex-shrink: 0;
+}
+
+.vs-title {
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* Grille cards */
+.vs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+
+/* Card bouton */
+.vc {
+  all: unset;
+  display: block;
+  cursor: pointer;
+  border: 2px solid rgba(201,168,76,0.15);
+  background: #0d1f3c;
+  transition: border-color 0.25s, background 0.25s;
+  text-align: left;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vc:hover { border-color: var(--or); background: #122040; }
+.vc-active { border-color: var(--or) !important; background: rgba(201,168,76,0.08) !important; }
+
+/* Preview avec iframe non interactive */
+.vc-preview {
+  position: relative;
+  width: 100%; padding-bottom: 56.25%;
+  overflow: hidden; background: #000;
   pointer-events: none;
 }
-.vc-card {
-  pointer-events: all;
+
+/* Overlay cliquable par-dessus l'iframe */
+.vc-overlay {
+  position: absolute; inset: 0;
+  background: rgba(5,12,25,0.45);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.25s;
+  pointer-events: none;
+}
+
+.vc:hover .vc-overlay { background: rgba(5,12,25,0.2); }
+.vc-active .vc-overlay { background: rgba(201,168,76,0.1); }
+
+.vc-play-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--bleu);
+  font-weight: 700;
+  transition: transform 0.25s, background 0.25s;
+  pointer-events: none;
+}
+
+.vc:hover .vc-play-icon { transform: scale(1.15); background: var(--or); }
+
+.vc-lbl {
+  padding: 7px 8px;
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+.vs-cta { text-align: center; padding: 0 24px; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .vs-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .vs-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
+@media (max-width: 380px) {
+  .vs-grid { grid-template-columns: 1fr 1fr; }
 }
 
   </style>
@@ -2366,132 +2480,204 @@
 
 
 
+
+
   <!-- ======== VIDÉOS ÉDITION 2025 ======== -->
-  <section class="videos-section" id="videos2025">
-    <div class="vs-inner">
-      <div class="vs-eyebrow reveal">🎬 Revivez l'édition 2025</div>
-      <h2 class="vs-titre reveal">En image, en son,<br><em class="vs-or">en émotion.</em></h2>
-      <p class="vs-desc reveal">Ces vidéos ne mentent pas — c'est exactement l'ambiance qui vous attend le 17 octobre 2026.</p>
+  <section class="vs" id="videos2025">
+    <div class="vs-head">
+      <div class="vs-eye reveal">🎬 Revivez l'édition 2025</div>
+      <h2 class="vs-h2 reveal">En image, en son, <em>en émotion.</em></h2>
+      <p class="vs-sub reveal">Ces vidéos ne mentent pas — c'est exactement l'ambiance qui vous attend le 17 octobre 2026.</p>
     </div>
 
-    <div class="vs-layout reveal">
+    <!-- PLAYER PRINCIPAL -->
+    <div class="vs-main reveal">
+      <div class="vs-wrap" id="vsWrap">
+        <iframe
+          id="vsPlayer"
+          src="https://player.vimeo.com/video/1198047644?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;">
+        </iframe>
+      </div>
+      <div class="vs-meta">
+        <span class="vs-badge">▶ En lecture</span>
+        <span class="vs-title" id="vsTitle">Ambiance & Ouverture</span>
+      </div>
+    </div>
 
-      <!-- PLAYER PRINCIPAL -->
-      <div class="vs-player-col">
-        <div class="vs-player-wrap" id="vsPlayerWrap">
+    <!-- GRILLE VIDÉOS -->
+    <div class="vs-grid" id="vsGrid">
+      
+      <button class="vc vc-active" data-src="https://player.vimeo.com/video/1198047644?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Ambiance & Ouverture" type="button">
+        <div class="vc-preview">
           <iframe
-            id="vsMainPlayer"
             src="https://player.vimeo.com/video/1198047644?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
             frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;"
-            title="Forum Innov'Action 2025 — Ambiance & Ouverture">
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
           </iframe>
-        </div>
-        <div class="vs-player-meta">
-          <span class="vs-now-badge">▶ En lecture</span>
-          <span class="vs-now-title" id="vsNowTitle">Ambiance & Ouverture</span>
-        </div>
-      </div>
-
-      <!-- PLAYLIST -->
-      <div class="vs-playlist">
-        
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198048819?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Moments de réseautage">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198048819.jpg" alt="Moments de réseautage" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Moments de réseautage</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198047645?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Ateliers en direct">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198047645.jpg" alt="Ateliers en direct" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Ambiance & Ouverture</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198048819?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Moments de réseautage" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198048819?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Ateliers en direct</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198047646?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Conférences inspirantes">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198047646.jpg" alt="Conférences inspirantes" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Moments de réseautage</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198047645?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Ateliers en direct" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047645?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Conférences inspirantes</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198047643?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Panel d'experts">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198047643.jpg" alt="Panel d'experts" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Ateliers en direct</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198047646?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Conférences inspirantes" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047646?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Panel d'experts</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198115926?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Concours de Pitch">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198115926.jpg" alt="Concours de Pitch" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Conférences inspirantes</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198047643?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Panel d'experts" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047643?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Concours de Pitch</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198115925?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Connexions & Échanges">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198115925.jpg" alt="Connexions & Échanges" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Panel d'experts</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198115926?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Concours de Pitch" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198115926?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Connexions & Échanges</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198115924?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Moments forts">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198115924.jpg" alt="Moments forts" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Concours de Pitch</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198115925?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Connexions & Échanges" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198115925?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Moments forts</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198123839?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Backstage & Coulisses">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198123839.jpg" alt="Backstage & Coulisses" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Connexions & Échanges</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198115924?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Moments forts" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198115924?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Backstage & Coulisses</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198123838?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Cocktail de clôture">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198123838.jpg" alt="Cocktail de clôture" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Moments forts</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198123839?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Backstage & Coulisses" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198123839?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Cocktail de clôture</div>
         </div>
-        <div class="vc-card" data-vimeo="https://player.vimeo.com/video/1198123840?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Remise des prix">
-          <div class="vc-thumb-wrap">
-            <img class="vc-thumb" src="https://vumbnail.com/1198123840.jpg" alt="Remise des prix" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="vc-thumb-overlay"></div>
-            <div class="vc-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="vc-lbl">Backstage & Coulisses</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198123838?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Cocktail de clôture" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198123838?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
           </div>
-          <div class="vc-label">Remise des prix</div>
         </div>
-      </div>
+        <div class="vc-lbl">Cocktail de clôture</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198123840?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Remise des prix" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198123840?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Remise des prix</div>
+      </button>
     </div>
 
-    <!-- Script Vimeo player API -->
     <script src="https://player.vimeo.com/api/player.js"></script>
 
     <div class="vs-cta reveal">
@@ -2734,60 +2920,7 @@
   </script>
 
 </body>
-</html// ---- VIDÉOS VIMEO PLAYLIST ----
-(function(){
-  const wrap     = document.getElementById("vsPlayerWrap");
-  const nowTitle = document.getElementById("vsNowTitle");
-  if (!wrap) return;
-
-  function loadVideo(src, label) {
-    // Vider le wrap et recréer l'iframe
-    wrap.innerHTML = "";
-    const iframe = document.createElement("iframe");
-    iframe.setAttribute("src", src + "&autoplay=1");
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share");
-    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-    iframe.setAttribute("allowfullscreen", "true");
-    iframe.style.cssText = "position:absolute;top:0;left:0;width:100%;height:100%;border:0;";
-    iframe.title = label;
-    wrap.appendChild(iframe);
-    if (nowTitle) nowTitle.textContent = label;
-    document.querySelectorAll(".vc-card").forEach(c => c.classList.remove("active"));
-  }
-
-  // Rendre chaque card entièrement cliquable
-  document.querySelectorAll(".vc-card").forEach(card => {
-    // Supprimer les anciens listeners en clonant
-    const clone = card.cloneNode(true);
-    card.parentNode.replaceChild(clone, card);
-
-    clone.style.cursor = "pointer";
-
-    // Listener sur la card entière
-    clone.addEventListener("click", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const src   = this.dataset.vimeo;
-      const label = this.dataset.label;
-      loadVideo(src, label);
-      this.classList.add("active");
-      // Scroll vers le player sur mobile
-      wrap.closest(".vs-player-col").scrollIntoView({ behavior: "smooth", block: "start" });
-    }, { passive: false });
-
-    // Touch events pour mobile
-    clone.addEventListener("touchend", function(e) {
-      e.preventDefault();
-      const src   = this.dataset.vimeo;
-      const label = this.dataset.label;
-      loadVideo(src, label);
-      this.classList.add("active");
-      wrap.closest(".vs-player-col").scrollIntoView({ behavior: "smooth", block: "start" });
-    }, { passive: false });
-  });
-})();
-
+</html
 TYPE html>
 <html lang="fr">
 <head>
@@ -5265,6 +5398,210 @@ TYPE html>
     </div>
 
     <!-- Script Vimeo player API -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+    <div class="vs-cta reveal">
+      <a href="#billets" class="ed-cta-btn">→ Je veux vivre ça le 17 octobre 2026</a>
+      <p class="ed-cta-sub">Places limitées à 100 ambassadeurs</p>
+    </div>
+  </section>
+
+  <!-- ======== VIDÉOS ÉDITION 2025 ======== -->
+  <section class="vs" id="videos2025">
+    <div class="vs-head">
+      <div class="vs-eye reveal">🎬 Revivez l'édition 2025</div>
+      <h2 class="vs-h2 reveal">En image, en son, <em>en émotion.</em></h2>
+      <p class="vs-sub reveal">Ces vidéos ne mentent pas — c'est exactement l'ambiance qui vous attend le 17 octobre 2026.</p>
+    </div>
+
+    <!-- PLAYER PRINCIPAL -->
+    <div class="vs-main reveal">
+      <div class="vs-wrap" id="vsWrap">
+        <iframe
+          id="vsPlayer"
+          src="https://player.vimeo.com/video/1198047644?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;">
+        </iframe>
+      </div>
+      <div class="vs-meta">
+        <span class="vs-badge">▶ En lecture</span>
+        <span class="vs-title" id="vsTitle">Ambiance & Ouverture</span>
+      </div>
+    </div>
+
+    <!-- GRILLE VIDÉOS -->
+    <div class="vs-grid" id="vsGrid">
+      
+      <button class="vc vc-active" data-src="https://player.vimeo.com/video/1198047644?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Ambiance & Ouverture" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047644?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Ambiance & Ouverture</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198048819?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Moments de réseautage" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198048819?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Moments de réseautage</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198047645?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Ateliers en direct" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047645?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Ateliers en direct</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198047646?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Conférences inspirantes" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047646?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Conférences inspirantes</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198047643?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Panel d'experts" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198047643?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Panel d'experts</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198115926?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Concours de Pitch" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198115926?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Concours de Pitch</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198115925?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Connexions & Échanges" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198115925?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Connexions & Échanges</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198115924?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Moments forts" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198115924?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Moments forts</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198123839?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Backstage & Coulisses" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198123839?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Backstage & Coulisses</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198123838?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Cocktail de clôture" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198123838?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Cocktail de clôture</div>
+      </button>
+      <button class="vc" data-src="https://player.vimeo.com/video/1198123840?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" data-label="Remise des prix" type="button">
+        <div class="vc-preview">
+          <iframe
+            src="https://player.vimeo.com/video/1198123840?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="fullscreen"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
+            loading="lazy">
+          </iframe>
+          <div class="vc-overlay">
+            <div class="vc-play-icon">▶</div>
+          </div>
+        </div>
+        <div class="vc-lbl">Remise des prix</div>
+      </button>
+    </div>
+
     <script src="https://player.vimeo.com/api/player.js"></script>
 
     <div class="vs-cta reveal">
