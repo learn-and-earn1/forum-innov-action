@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forum Innov'Action 2026 — L'IA travaille. Toi tu bâtis.</title>
-  <meta name="description" content="Forum Innov'Action 2026 — Samedi samedi 24 octobre 2026 · Université Laval · Québec City. L'événement des entrepreneurs hybrides.">
+  <meta name="description" content="Forum Innov'Action 2026 — Samedi samedi 24 octobre 2026 · Espace Jardin · Université Laval · Québec. L'événement des entrepreneurs hybrides.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -3189,6 +3189,415 @@
   animation: none !important;
 }
 
+  
+  
+/* ===== STANDS GRID ===== */
+.stands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0 20px;
+}
+
+.stand-card {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(201,168,76,0.2);
+  padding: 28px 22px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.stand-card:hover {
+  border-color: rgba(201,168,76,0.5);
+  transform: translateY(-3px);
+}
+
+.stand-badge-top {
+  position: absolute; top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--or); color: var(--bleu);
+  font-size: 10px; font-weight: 700;
+  padding: 3px 14px; white-space: nowrap;
+}
+
+.stand-nom {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--or); margin-bottom: 4px;
+}
+
+.stand-prix {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 900;
+  color: var(--blanc); margin-bottom: 16px;
+}
+
+.stand-tax { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+.stand-features {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.stand-features li {
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.btn-stand-essentiel, .btn-stand-premium, .btn-stand-prestige {
+  display: block; text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700; font-size: 13px;
+  padding: 12px; text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-stand-essentiel {
+  background: rgba(201,168,76,0.15);
+  border: 1.5px solid rgba(201,168,76,0.4);
+  color: var(--or);
+}
+
+.btn-stand-premium {
+  background: var(--or); color: var(--bleu);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+  animation: goldShift 3s ease infinite;
+  background: linear-gradient(135deg, #C9A84C, #e8c96a, #C9A84C);
+  background-size: 200% 200%;
+}
+
+.btn-stand-prestige {
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: var(--blanc);
+}
+
+.btn-stand-essentiel:hover, .btn-stand-premium:hover, .btn-stand-prestige:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* SPONSORS */
+.sponsors-bloc {
+  margin: 40px 0 28px;
+  padding: 28px;
+  border: 1px solid rgba(201,168,76,0.2);
+  background: rgba(201,168,76,0.03);
+}
+
+.sponsors-titre {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--or); margin-bottom: 6px;
+}
+
+.sponsors-sous {
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.sponsor-card {
+  padding: 18px 16px;
+  border-radius: 2px;
+  border: 1.5px solid rgba(255,255,255,0.1);
+}
+
+.sponsor-bronze { border-color: rgba(180,120,60,0.4); background: rgba(180,120,60,0.06); }
+.sponsor-or { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.08); }
+.sponsor-platine { border-color: rgba(180,180,220,0.4); background: rgba(180,180,220,0.06); }
+
+.sponsor-level {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.1em; margin-bottom: 6px;
+  color: var(--or);
+}
+
+.sponsor-prix {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 900;
+  color: var(--blanc); margin-bottom: 8px;
+}
+
+.sponsor-desc {
+  font-size: 11px; color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .stands-grid, .sponsors-grid { grid-template-columns: 1fr; }
+}
+
+  
+/* ════════════════════════════════════════
+   SECTION BILLETS — REDESIGN PREMIUM
+════════════════════════════════════════ */
+.billets-section {
+  background: var(--gris-clair);
+  padding: 96px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.billets-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%, rgba(27,58,107,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(201,168,76,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.billets-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+  text-align: center;
+}
+
+.billets-eyebrow {
+  display: block;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--or); margin-bottom: 14px;
+}
+
+.billets-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900; color: var(--bleu);
+  line-height: 1.15; margin-bottom: 12px;
+}
+.billets-h2 em { color: var(--or); font-style: italic; }
+
+.billets-meta {
+  font-size: 14px; color: #888;
+  margin-bottom: 52px; letter-spacing: 0.02em;
+}
+
+/* ── GRILLE ── */
+.billets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── CARTE COMMUNE ── */
+.billet-card {
+  background: #fff;
+  border: 1.5px solid #e8e6e0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.billet-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(27,58,107,0.12);
+}
+
+/* VIP — mise en valeur */
+.bc-vip {
+  border: 2px solid #C9A84C !important;
+  box-shadow: 0 8px 32px rgba(201,168,76,0.15);
+  transform: translateY(-8px);
+}
+
+.bc-vip:hover { transform: translateY(-14px) !important; }
+
+/* Virtuel */
+.bc-virtuel { border-color: rgba(155,89,182,0.3) !important; }
+
+/* ── BADGE ── */
+.bc-badge {
+  position: absolute; top: 0; left: 0; right: 0;
+  background: linear-gradient(135deg, #C9A84C, #e8c96a);
+  color: #1B3A6B;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 6px 0;
+  text-align: center;
+}
+
+/* ── TOP ── */
+.bc-top {
+  padding: 36px 28px 24px;
+}
+
+.bc-vip .bc-top { padding-top: 48px; }
+
+.bc-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--bleu); margin-bottom: 14px;
+}
+
+.bc-price-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.bc-price {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 6vw, 72px);
+  font-weight: 900;
+  color: var(--bleu);
+  line-height: 1;
+}
+
+.bc-currency {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700;
+  color: var(--bleu);
+  margin-top: 10px;
+}
+
+.bc-devise {
+  font-size: 12px; color: #aaa;
+  letter-spacing: 0.04em;
+}
+
+/* ── DIVIDER ── */
+.bc-divider {
+  height: 1px;
+  background: #f0ede6;
+  margin: 0 28px;
+}
+
+/* ── FEATURES ── */
+.bc-features {
+  list-style: none;
+  padding: 24px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bc-features li {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.bc-features li::before {
+  content: '✓';
+  color: var(--or);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.bc-star {
+  color: var(--or);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+/* ── BOTTOM ── */
+.bc-bottom {
+  padding: 0 28px 28px;
+}
+
+/* ── BOUTONS ── */
+.bc-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700; font-size: 14px;
+  padding: 15px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.bc-btn-std {
+  background: var(--bleu);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(27,58,107,0.25);
+}
+.bc-btn-std:hover {
+  background: #152d54;
+  box-shadow: 0 8px 28px rgba(27,58,107,0.38);
+  transform: translateY(-1px);
+}
+
+.bc-btn-vip {
+  background: linear-gradient(135deg, #C9A84C 0%, #e8c96a 45%, #C9A84C 100%);
+  background-size: 200% 200%;
+  animation: goldShift 3s ease infinite;
+  color: var(--bleu);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+  font-size: 15px;
+}
+.bc-btn-vip:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 8px 32px rgba(201,168,76,0.55);
+  transform: translateY(-1px);
+}
+
+.bc-btn-virtuel {
+  background: #6C3483;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(108,52,131,0.25);
+}
+.bc-btn-virtuel:hover {
+  background: #5a2b6e;
+  box-shadow: 0 8px 28px rgba(108,52,131,0.4);
+  transform: translateY(-1px);
+}
+
+/* ── NOTE ── */
+.bc-note {
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+}
+
+.bc-note-urgence {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* ── FOOTER NOTE ── */
+.billets-footer-note {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 32px;
+  letter-spacing: 0.04em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .billets-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .bc-vip { transform: none; }
+  .bc-vip:hover { transform: translateY(-6px) !important; }
+}
+
+@media (max-width: 520px) {
+  .billets-section { padding: 64px 16px 56px; }
+}
+
   </style>
 </head>
 <body>
@@ -3210,9 +3619,9 @@
     <div class="hero-meta">
       <span class="hero-meta-item">📅 Samedi samedi 24 octobre 2026</span>
       <span class="hero-meta-item"><span class="dot"></span></span>
-      <span class="hero-meta-item">⏰ 10h00 à 16h15</span>
+      <span class="hero-meta-item">⏰ 10h00 à 18h30</span>
       <span class="hero-meta-item"><span class="dot"></span></span>
-      <span class="hero-meta-item">📍 Université Laval · Québec City</span>
+      <span class="hero-meta-item">📍 Espace Jardin · Université Laval · Québec</span>
     </div>
 
     <!-- Compte à rebours -->
@@ -3291,52 +3700,60 @@
       <div class="gold-line"></div>
       <div class="programme-grid reveal">
         <div class="prog-item">
-          <div class="prog-heure">9h30</div>
-          <div class="prog-content"><span class="prog-icon">🔧</span><span class="prog-texte">Accueil — Ouverture des portes · Café · Badges · 1ère visite kiosques</span></div>
+          <div class="prog-heure">9h30 – 10h00</div>
+          <div class="prog-content"><span class="prog-icon">☕</span><span class="prog-texte">Accueil &amp; Réseautage — Café de bienvenue · Kiosques partenaires · Réseautage stratégique</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">10h00</div>
-          <div class="prog-content"><span class="prog-icon">🎙️</span><span class="prog-texte">Ouverture officielle — Discours d'ouverture · Présentation des exposants partenaires</span></div>
+          <div class="prog-heure">10h00 – 10h15</div>
+          <div class="prog-content"><span class="prog-icon">🎙️</span><span class="prog-texte">Ouverture officielle — Mattia Sénadé Guidihoun</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">10h10</div>
-          <div class="prog-content"><span class="prog-icon">⚙️</span><span class="prog-texte">Conférence IA 1 · 50 min — Automatise ton business grâce à l'IA</span></div>
+          <div class="prog-heure">10h15 – 10h55</div>
+          <div class="prog-content"><span class="prog-icon">🤖</span><span class="prog-texte">Conférence 1 — Automatiser son entreprise grâce à l'IA · Dr Asma Razgallah</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">11h00</div>
-          <div class="prog-content"><span class="prog-icon">🤝</span><span class="prog-texte">Réseautage guidé · 40 min — Échanges · Kiosques exposants · Collations</span></div>
+          <div class="prog-heure">10h55 – 11h35</div>
+          <div class="prog-content"><span class="prog-icon">🤝</span><span class="prog-texte">Pause Réseautage — Rencontrez, échangez, collaborez</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">11h40</div>
-          <div class="prog-content"><span class="prog-icon">💡</span><span class="prog-texte">Conférence IA 2 · 50 min — Crée du contenu et bâtis ta visibilité grâce à l'IA</span></div>
+          <div class="prog-heure">11h35 – 12h15</div>
+          <div class="prog-content"><span class="prog-icon">💡</span><span class="prog-texte">Conférence 2 — Crée du contenu et développe ta visibilité grâce à l'IA · Tatiana Saint-Louis</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">12h30</div>
-          <div class="prog-content"><span class="prog-icon">🍽️</span><span class="prog-texte">Lunch & Réseautage · 60 min — Repas · Réseautage libre · Kiosques ouverts</span></div>
+          <div class="prog-heure">12h15 – 13h15</div>
+          <div class="prog-content"><span class="prog-icon">🍽️</span><span class="prog-texte">Dîner d'Affaires &amp; Réseautage — Élargissez votre réseau</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">13h30</div>
-          <div class="prog-content"><span class="prog-icon">🏢</span><span class="prog-texte">Exposants · 30 min — Présentations express · 15 exposants × 2 min</span></div>
+          <div class="prog-heure">13h15 – 13h55</div>
+          <div class="prog-content"><span class="prog-icon">✍️</span><span class="prog-texte">Atelier Leadership — De l'exécutant au visionnaire · Maryse Ange Koua</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">14h00</div>
-          <div class="prog-content"><span class="prog-icon">✍️</span><span class="prog-texte">Atelier Leadership · 45 min — Le leader hybride que tu es déjà</span></div>
+          <div class="prog-heure">13h55 – 14h15</div>
+          <div class="prog-content"><span class="prog-icon">🤝</span><span class="prog-texte">Pause Réseautage</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">14h45</div>
-          <div class="prog-content"><span class="prog-icon">🤝</span><span class="prog-texte">Réseautage libre · 15 min — Échanges · Dernière visite kiosques</span></div>
+          <div class="prog-heure">14h15 – 14h55</div>
+          <div class="prog-content"><span class="prog-icon">🔐</span><span class="prog-texte">Conférence 3 — Cybersécurité pour entrepreneurs · Conférencier·ère à confirmer</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">15h00</div>
-          <div class="prog-content"><span class="prog-icon">🎤</span><span class="prog-texte">Concours de Pitch · 75 min — Pitcher Hybride et Fier·e · 12 pitcheurs · 3 min + 2 min jury</span></div>
+          <div class="prog-heure">14h55 – 15h15</div>
+          <div class="prog-content"><span class="prog-icon">🤝</span><span class="prog-texte">Pause Réseautage</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">16h15</div>
-          <div class="prog-content"><span class="prog-icon">🏆</span><span class="prog-texte">Clôture · 10 min — Remise des prix · Lancement Pitch Day 2027 · Mot final</span></div>
+          <div class="prog-heure">15h15 – 15h55</div>
+          <div class="prog-content"><span class="prog-icon">🚀</span><span class="prog-texte">Conférence 4 — L'entrepreneur hybride : identité et positionnement · Mattia Sénadé Guidihoun</span></div>
         </div>
         <div class="prog-item">
-          <div class="prog-heure">16h25</div>
-          <div class="prog-content"><span class="prog-icon">🥂</span><span class="prog-texte">Cocktail de réseautage — Célébration · Photos · Échanges avec exposants</span></div>
+          <div class="prog-heure">16h10 – 17h25</div>
+          <div class="prog-content"><span class="prog-icon">🎤</span><span class="prog-texte">Concours de Pitch — Hybride &amp; Fier·e · Jury d'experts · Vote du public</span></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-heure">17h25 – 17h50</div>
+          <div class="prog-content"><span class="prog-icon">🏆</span><span class="prog-texte">Remise des Prix — Prix du jury · Prix Coup de cœur · Lancement Pitch Day 2027</span></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-heure">17h50 – 18h30</div>
+          <div class="prog-content"><span class="prog-icon">🥂</span><span class="prog-texte">Célébration &amp; Cocktail — Photos officielles · Réseautage · Célébration de l'innovation</span></div>
         </div>
       </div>
       <div style="text-align:center;">
@@ -3642,48 +4059,96 @@
   </section>
 
   <!-- ======== BILLETS ======== -->
-  <section class="billets" id="billets">
+  <section class="billets-section" id="billets">
     <div class="billets-inner">
-      <h2 class="section-titre reveal">Choisis ta <span class="accent">formule</span></h2>
-      <div class="gold-line"></div>
 
-      <div class="billets-grid">
-        <!-- Standard -->
-        <div class="billet-card reveal">
-          <div class="billet-type">Billet Standard</div>
-          <div class="billet-prix">145<span style="font-size:28px">$</span></div>
-          <div class="billet-devise">CAD · Tarif régulier</div>
-          <ul class="billet-features">
-            <li>Journée complète (10h00 à 16h15)</li>
-            <li>Lunch inclus</li>
-            <li>Accès aux 4 ateliers IA en direct</li>
-            <li>Panel Finances · Conférence Visibilité · Atelier Leadership</li>
-            <li>Concours de Pitch — comme spectateur et votant</li>
-            <li>Cocktail de réseautage</li>
-            <li>Badge Ambassadeur officiel</li>
+      <span class="billets-eyebrow reveal">🎟️ Choisissez votre expérience</span>
+      <h2 class="billets-h2 reveal">Votre place au Forum<br><em>Innov'Action 2026</em></h2>
+      <p class="billets-meta reveal">Samedi 24 octobre 2026 · Espace Jardin · Université Laval · Québec</p>
+
+      <div class="billets-grid reveal">
+
+        <!-- ── STANDARD ── -->
+        <div class="billet-card bc-standard">
+          <div class="bc-top">
+            <div class="bc-label">Billet Standard</div>
+            <div class="bc-price-wrap">
+              <span class="bc-price">125</span>
+              <span class="bc-currency">$</span>
+            </div>
+            <div class="bc-devise">CAD · Accès présentiel</div>
+          </div>
+          <div class="bc-divider"></div>
+          <ul class="bc-features">
+            <li>Journée complète 10h00 à 18h30</li>
+            <li>Lunch d'affaires inclus</li>
+            <li>4 Conférences IA en direct</li>
+            <li>Atelier Leadership · Concours de Pitch</li>
+            <li>Réseautage & Cocktail de clôture</li>
           </ul>
-          <a href="#" class="btn-billet-std">Je prends mon billet Standard — 145 $</a>
+          <div class="bc-bottom">
+            <a href="#" class="bc-btn bc-btn-std">Je prends mon billet — 125 $</a>
+            <p class="bc-note">Places illimitées</p>
+          </div>
         </div>
 
-        <!-- VIP -->
-        <div class="billet-card vip reveal">
-          <div class="pastille">⭐ RECOMMANDÉ</div>
-          <div class="billet-type">Billet VIP</div>
-          <div class="billet-prix">395<span style="font-size:28px">$</span></div>
-          <div class="billet-devise">CAD · Accès premium</div>
-          <ul class="billet-features">
-            <li>Tout du billet Standard</li>
-            <li>Table VIP au lunch — place réservée</li>
-            <li>Accès backstage avec les intervenants</li>
-            <li>Photo professionnelle incluse</li>
-            <li>Cadeau exclusif Forum Innov'Action 2026</li>
-            <li>Siège réservé en première rangée</li>
+        <!-- ── VIP ── -->
+        <div class="billet-card bc-vip">
+          <div class="bc-badge">⭐ RECOMMANDÉ</div>
+          <div class="bc-top">
+            <div class="bc-label" style="color:var(--or);">Billet VIP</div>
+            <div class="bc-price-wrap">
+              <span class="bc-price" style="color:var(--or);">295</span>
+              <span class="bc-currency" style="color:var(--or);">$</span>
+            </div>
+            <div class="bc-devise">CAD · Expérience premium</div>
+          </div>
+          <div class="bc-divider" style="background:rgba(201,168,76,0.3);"></div>
+          <ul class="bc-features">
+            <li>Tout du Billet Standard inclus</li>
+            <li><span class="bc-star">✦</span> Table VIP au dîner d'affaires</li>
+            <li><span class="bc-star">✦</span> Accès backstage avec les conférenciers</li>
+            <li><span class="bc-star">✦</span> Photo professionnelle incluse</li>
+            <li><span class="bc-star">✦</span> Siège en première rangée</li>
+            <li><span class="bc-star">✦</span> Cadeau exclusif Forum 2026</li>
           </ul>
-          <a href="#" class="btn-billet-vip">Je prends mon billet VIP — 395 $</a>
+          <div class="bc-bottom">
+            <a href="#" class="bc-btn bc-btn-vip">Je prends mon Billet VIP — 295 $</a>
+            <p class="bc-note bc-note-urgence">⚠️ Seulement 10 places disponibles</p>
+          </div>
         </div>
-      </div>
 
-      <p class="securite-label reveal">🔒 Paiement 100% sécurisé · Stripe · Politique de remboursement disponible</p>
+        <!-- ── VIRTUEL ── -->
+        <div class="billet-card bc-virtuel">
+          <div class="bc-top">
+            <div class="bc-label" style="color:#9b59b6;">Billet Virtuel</div>
+            <div class="bc-price-wrap">
+              <span class="bc-price" style="color:#9b59b6;">95</span>
+              <span class="bc-currency" style="color:#9b59b6;">$</span>
+            </div>
+            <div class="bc-devise">CAD · Accès en ligne</div>
+          </div>
+          <div class="bc-divider" style="background:rgba(155,89,182,0.25);"></div>
+          <ul class="bc-features">
+            <li>Accès live streaming HD</li>
+            <li>4 Conférences IA en direct</li>
+            <li>Atelier Leadership en live</li>
+            <li>Concours de Pitch en direct</li>
+            <li>Accès aux replays 48h après</li>
+          </ul>
+          <div class="bc-bottom">
+            <a href="#" class="bc-btn bc-btn-virtuel">Je prends mon Billet Virtuel — 95 $</a>
+            <p class="bc-note bc-note-urgence">⚠️ Limité à 20 places seulement</p>
+          </div>
+        </div>
+
+      </div><!-- /billets-grid -->
+
+      <!-- Note bas -->
+      <p class="billets-footer-note reveal">
+        Tous les prix sont en dollars canadiens (CAD) · taxes en sus · Paiement sécurisé
+      </p>
+
     </div>
   </section>
 
@@ -3744,7 +4209,7 @@
 
       <!-- CTAs -->
       <div class="pitch-ctas reveal">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUnqP32V0VsMTYxXKg-zEjMjKaG6sfesnsfz7jGOCqa4HQmg/viewform" target="_blank" class="btn-pitch-main">
+        <a href="https://forms.gle/mNX2FhbksB7t4oj16" target="_blank" class="btn-pitch-main">
           → Soumettre ma candidature
         </a>
         <a href="https://concours-de-pitch.vercel.app/" target="_blank" class="btn-pitch-learn">
@@ -3757,21 +4222,91 @@
   </section>
 
   <!-- ======== EXPOSANTS ======== -->
-  <section class="exposants-section">
+  <section class="exposants-section" id="exposants">
     <div class="exposants-inner">
       <h2 class="section-titre reveal">🏢 Tu veux avoir un kiosque ?</h2>
       <div class="gold-line"></div>
       <p class="exposants-sous reveal">Rejoins les 15 exposants du Forum Innov'Action 2026</p>
-      <p class="exposants-desc reveal">Accès direct à 100 entrepreneurs hybrides qualifiés. Kiosque exposant : 95 $ CAD — billet d'entrée non inclus, à acheter séparément.</p>
+      <p class="exposants-desc reveal">Accès direct à 100 entrepreneurs hybrides qualifiés. Choisissez la formule qui correspond à votre ambition.</p>
+
+      <!-- 3 FORMULES STAND -->
+      <div class="stands-grid reveal">
+
+        <div class="stand-card">
+          <div class="stand-nom">Essentiel</div>
+          <div class="stand-prix">295 $<span class="stand-tax"> + taxes</span></div>
+          <ul class="stand-features">
+            <li>Kiosque dédié (table + 2 chaises)</li>
+            <li>Logo dans le programme officiel</li>
+            <li>Visibilité sur les plateformes MG</li>
+            <li>Prix du Forum Innov'Action</li>
+            <li>Accès aux 4 pauses réseautage</li>
+          </ul>
+          <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="btn-stand-essentiel">→ Réserver ce stand</a>
+        </div>
+
+        <div class="stand-card stand-premium">
+          <div class="stand-badge-top">⭐ POPULAIRE</div>
+          <div class="stand-nom">Premium</div>
+          <div class="stand-prix">495 $<span class="stand-tax"> + taxes</span></div>
+          <ul class="stand-features">
+            <li>Tout de la formule Essentiel</li>
+            <li>⭐ Présentation 2 min au dîner d'affaires</li>
+            <li>⭐ Mention spéciale sur réseaux sociaux</li>
+            <li>⭐ 1 billet Standard inclus</li>
+            <li>⭐ Emplacement privilégié</li>
+          </ul>
+          <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="btn-stand-premium">→ Réserver ce stand</a>
+        </div>
+
+        <div class="stand-card stand-prestige">
+          <div class="stand-nom">Prestige</div>
+          <div class="stand-prix">995 $<span class="stand-tax"> + taxes</span></div>
+          <ul class="stand-features">
+            <li>Tout de la formule Premium</li>
+            <li>🏆 Présentation 5 min en plénière</li>
+            <li>🏆 Logo sur bannières événement</li>
+            <li>🏆 2 billets VIP inclus</li>
+            <li>🏆 Interview vidéo publiée post-événement</li>
+          </ul>
+          <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="btn-stand-prestige">→ Réserver ce stand</a>
+        </div>
+
+      </div>
+
+      <p class="exposant-note reveal">⚠️ Places limitées — 15 kiosques seulement · Billet non inclus sauf mention contraire</p>
+
+      <!-- SPONSORS -->
+      <div class="sponsors-bloc reveal">
+        <h3 class="sponsors-titre">🤝 Devenez Commanditaire / Sponsor</h3>
+        <p class="sponsors-sous">Visibilité maximale avant, pendant et après l'événement</p>
+        <div class="sponsors-grid">
+          <div class="sponsor-card sponsor-bronze">
+            <div class="sponsor-level">🥉 BRONZE</div>
+            <div class="sponsor-prix">1 499 $ CAD</div>
+            <div class="sponsor-desc">Logo sur supports visuels · Mention en ouverture · Post dédié réseaux sociaux</div>
+          </div>
+          <div class="sponsor-card sponsor-or">
+            <div class="sponsor-level">🥇 OR</div>
+            <div class="sponsor-prix">2 999 $ CAD</div>
+            <div class="sponsor-desc">Tout Bronze + Bannière événement · Présentation 3 min · 2 billets VIP inclus</div>
+          </div>
+          <div class="sponsor-card sponsor-platine">
+            <div class="sponsor-level">💎 PLATINE</div>
+            <div class="sponsor-prix">5 499 $ CAD</div>
+            <div class="sponsor-desc">Tout Or + Naming exclusif d'une session · Vidéo dédiée · 4 billets VIP · Partenariat Pitch Day 2027</div>
+          </div>
+        </div>
+      </div>
+
       <div class="exposant-btns reveal">
         <a href="DossierExposant_ForumInnovAction2026.pdf" target="_blank" class="btn-exposant-pdf">
           📄 Télécharger le dossier exposant
         </a>
-        <a href="https://forms.gle/evFeYg7gsSqPM4JN6" target="_blank" class="btn-exposant-form">
+        <a href="https://forms.gle/K9hZ8xwaMAebLWrT8" target="_blank" class="btn-exposant-form">
           → S'inscrire comme exposant
         </a>
       </div>
-      <p class="exposant-note reveal">⚠️ Places limitées — 15 kiosques seulement</p>
     </div>
   </section>
 
@@ -3907,8 +4442,8 @@
       <h2 class="reveal">L'IA travaille. Toi tu bâtis.<br><span>Commence le 17 octobre.</span></h2>
       <p class="cta-final-sous reveal">Places limitées à 100 ambassadeurs</p>
       <div class="cta-final-btns reveal">
-        <a href="#" class="btn-final-std">Billet Standard — 145 $</a>
-        <a href="#" class="btn-final-vip">Billet VIP — 395 $</a>
+        <a href="#" class="btn-final-std">Billet Standard — 125 $</a>
+        <a href="#" class="btn-final-vip">Billet VIP — 295 $</a>
       </div>
       <p class="cta-final-securite reveal">Paiement 100% sécurisé · Université Laval · 24 oct. 2026</p>
     </div>
@@ -3928,7 +4463,7 @@
       <a href="https://instagram.com/foruminnov" target="_blank">Instagram</a>
       <a href="#" target="_blank">Facebook</a>
     </div>
-    <div class="footer-copy">Université Laval · Québec City<br/>© 2026 MG Business Group Inc. Tous droits réservés. · contact@mgbusinessgroups.com · www.foruminnov.ca</div>
+    <div class="footer-copy">Espace Jardin · Université Laval · Québec<br/>© 2026 MG Business Group Inc. Tous droits réservés. · contact@mgbusinessgroups.com · www.foruminnov.ca</div>
   </footer>
 
   <script>
